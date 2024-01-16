@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { View, TextInput, Button, StyleSheet } from 'react-native';
 import 'react-native-get-random-values'
 import { v4 as uuidv4 } from 'uuid';
+import AddTask from './AddTask';
 
-const ToDoList = ({ initialValues }) => {
-    const [toDos, settoDos] = useState(initialValues.map((value) => ({ id: uuidv4(), toDo: value})))
+const ToDoList = ({ titles }) => {
+    const [toDos, settoDos] = useState(titles.map((value) => ({ id: uuidv4(), toDo: value})))
 
     const addToDo = (newTitle) => {
         const newToDo = { id: uuidv4, count: newTitle };
@@ -30,7 +31,7 @@ const ToDoList = ({ initialValues }) => {
 };
 
 ToDoList.defaultProps = {
-    initialValues: [],
+    titles: [],
 };
 
 const styles = StyleSheet.create({
