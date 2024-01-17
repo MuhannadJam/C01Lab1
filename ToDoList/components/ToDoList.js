@@ -8,7 +8,7 @@ const ToDoList = ({ titles }) => {
     const [toDos, settoDos] = useState(titles.map((value) => ({ id: uuidv4(), toDo: value})))
 
     const addToDo = (newTitle) => {
-        const newToDo = { id: uuidv4, count: newTitle };
+        const newToDo = { id: uuidv4(), toDo: newTitle };
         settoDos((prevToDoList) => [...prevToDoList, newToDo]);
     };
 
@@ -18,13 +18,13 @@ const ToDoList = ({ titles }) => {
 
     return (
         <View style={styles.todoListContainer}>
-          {ToDoList.map((toDo) => (
+          {toDos.map((toDo) => (
             <View style={styles.todoItem} key={toDo.id}>
                 <Text>{toDo.value}</Text>
                 <Button title="Remove" onPress={() => removeToDo(toDo.id)} />
             </View>
           ))}
-          <AddTask onAddTask={addTask} />
+          <AddTask onAddTask={addToDo} />
         </View>
       );
 

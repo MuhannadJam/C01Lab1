@@ -7,7 +7,7 @@ const AddTask = ({ onAddTask }) => {
 
     const handleAddTask = () => {
         if (title.trim() !== '') {
-            onAddTask(Text(title));
+            onAddTask(title);
             setTitle('');
         }
     };
