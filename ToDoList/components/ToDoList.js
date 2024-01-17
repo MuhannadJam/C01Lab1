@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, StyleSheet } from 'react-native';
+import { View, Text, Button, StyleSheet } from 'react-native';
 import 'react-native-get-random-values'
 import { v4 as uuidv4 } from 'uuid';
 import AddTask from './AddTask';
 
 const ToDoList = ({ titles }) => {
-    const [toDos, settoDos] = useState(titles.map((value) => ({ id: uuidv4(), toDo: value})))
+    const [toDos, settoDos] = useState(titles.map((value) => ({ id: uuidv4(), title: value})))
 
     const addToDo = (newTitle) => {
-        const newToDo = { id: uuidv4(), toDo: newTitle };
+        const newToDo = { id: uuidv4(), title: newTitle };
         settoDos((prevToDoList) => [...prevToDoList, newToDo]);
     };
 
@@ -20,7 +20,7 @@ const ToDoList = ({ titles }) => {
         <View style={styles.todoListContainer}>
           {toDos.map((toDo) => (
             <View style={styles.todoItem} key={toDo.id}>
-                <Text>{toDo.value}</Text>
+                <Text>{toDo.title}</Text>
                 <Button title="Remove" onPress={() => removeToDo(toDo.id)} />
             </View>
           ))}
